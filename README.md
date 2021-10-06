@@ -1,5 +1,5 @@
 # quotes
-** Use Gson To Read a JSON file locally and do a random output every run for the author and text from json file  ** 
+### Use Gson To Read a JSON file locally and do a random output every run for the author and text from json file.
 ## Feature Tasks
 
 * Use the file recentquotes.json to show random popular book quotes.
