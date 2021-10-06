@@ -10,19 +10,24 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Main {
+class LibraryTest {
     @Test void someLibraryMethodReturnsTrue() {
         Library classUnderTest = new Library();
         assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'");
     }
 
     @Test void jsonFileTest() throws FileNotFoundException {
+
         Gson gson = new Gson();
         JsonReader reader = new JsonReader(new FileReader("C:\\Users\\STUDENT\\401class\\quotes\\recentquotes.json"));
 
@@ -36,4 +41,28 @@ class Main {
         String test1 = jsonList.get(randoms).toString() ;
         assertEquals(test1,jsonList.get(randoms).toString());
     }
+
+    @Test void connectionTest () throws IOException {
+        String url = "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en";
+
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        assertEquals(200,connection.getResponseCode());
+    }
+
+    @Test void constructorTest () {
+        FromJson json = new FromJson("hello","ggg","gggg","gggggg");
+        String author  = json.getAuthor();
+        String quote = json.getText();
+        String authorApi = json.getQuoteAuthor();
+        String quoteApi = json.getQuoteText();
+
+        assertEquals(author,json.getAuthor());
+        assertEquals(quote,json.getText());
+        assertEquals(authorApi,json.getQuoteAuthor());
+        assertEquals(quoteApi,json.getQuoteText());
+
+    }
+
+
+
 }
