@@ -1,5 +1,5 @@
 # quotes
-### Use Gson To Read a JSON file locally and do a random output every run for the author and text from json file.
+### create the repo to get the data from locally json file by using gson .
 ## Feature Tasks
 
 * Use the file recentquotes.json to show random popular book quotes.
